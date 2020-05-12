@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true">
+	<property file="${config.path}/log.properties" />
+	<include resource="Commons/logback.xml" />
+	<timestamp key="REPORT_PATH" datePattern="yyyy-MM-dd_HH_mm" />
+
+	<appender name="CONSOLE_APPENDER"
+		class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>[%date][%X{requestId}][%t][%.-5level][%logger{0}]::
+				%msg%n
+			</pattern>
+		</encoder>
+	</appender>
+	<appender name="FILE" class="ch.qos.logback.core.FileAppender">
+		<file>${user.dir}/test-output/${REPORT_PATH}/logs/application.log</file>
+		<encoder>
+			<Pattern>[%date][%X{requestId}][%t][%.-5level][%logger{0}]::
+				%msg%n
+			</Pattern>
+		</encoder>
+	</appender>
+	<appender name="UAPFILE" class="ch.qos.logback.core.FileAppender"> 
+        <file>${user.dir}/test-output/${REPORT_PATH}/logs/reporting.log</file>
+        <encoder> 
+            <pattern>%d{HH:mm:ss,SSS} %-5p [%c] - %m%n</pattern> 
+        </encoder> 
+    </appender> 
+    <logger name="com.infogain.uap.logger.Reporting" level="info" additivity="true">
+    	<appender-ref ref="UAPFILE" />
+    </logger>
+
+	<root level="info">
+		<appender-ref ref="CONSOLE_APPENDER" />
+		<appender-ref ref="FILE" />
+	</root>
+
+</configuration>
