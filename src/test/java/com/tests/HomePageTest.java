@@ -41,7 +41,6 @@ public class HomePageTest extends BaseTestCase{
 		AssertStep.assertStep(this, "Click button-clicks.");
 		homePage.clickButton();
 		log.info("button click: "+((RemoteWebDriver)driver).getSessionId().toString());
-		Assert.fail();
 	}
 	
 }

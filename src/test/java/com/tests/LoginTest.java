@@ -45,7 +45,6 @@ public class LoginTest extends BaseTestCase{
 		loginPage.clickLogin();
 		AssertStep.assertStep(this, "Accept alert.");
 		loginPage.acceptAlert();
-		System.out.println(((RemoteWebDriver)driver).getSessionId().toString());
 		Thread.sleep(10000);
 	}
 
