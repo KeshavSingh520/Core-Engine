@@ -7,6 +7,12 @@
 	<artifactId>Salesforce</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 
+	<properties>
+		<!-- PATH TO SUITE with testsuites folder -->
+		<test.run>testng.xml</test.run>
+
+	</properties>
+
 	<dependencies>
 
 		<dependency>
