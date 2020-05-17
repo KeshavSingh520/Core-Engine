@@ -23,7 +23,7 @@ import utils.ScreenshotUtility;
 public class ReportHandler {
 
 	public static String directory = IOUtility.getStrPath();
-	public static String reportPath = directory + File.separator + getCurrentDate() + ".html";
+	public static String reportPath = directory + File.separator  + "AutomationReport.html";
 	public static ExtentHtmlReporter htmlReporter = new ExtentHtmlReporter(reportPath);
 	public static ExtentReports extentReports = new ExtentReports();
 	public static ThreadLocal<ExtentTest> threadExtentTest = new ThreadLocal<>();
