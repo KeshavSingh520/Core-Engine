@@ -1,5 +1,6 @@
 package com.pageobjects;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -19,8 +20,16 @@ public class HomePage extends BasePage{
 	@FindBy(xpath="//a[@id='login-portal']")
 	private WebElement aLogin;
 	
+	@FindBy(id="button-clicks")
+	private WebElement btnClick;
+	
 	public LoginPage clickLogin(){
-		aLogin.click();
+		driver.findElement(By.xpath("//a[@id='login-portal']")).click();
+		return PageFactory.initElements(driver, LoginPage.class);
+	}
+	
+	public LoginPage clickButton(){
+		btnClick.click();
 		return PageFactory.initElements(driver, LoginPage.class);
 	}
 }

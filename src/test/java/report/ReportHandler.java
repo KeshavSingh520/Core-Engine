@@ -1,5 +1,6 @@
 package report;
 
+import java.io.File;
 import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -15,17 +16,21 @@ import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
 import com.aventstack.extentreports.reporter.configuration.ChartLocation;
 
 import lombok.extern.slf4j.Slf4j;
+import utils.IOUtility;
 import utils.ScreenshotUtility;
 
 @Slf4j
 public class ReportHandler {
 
-	public static String strPath = System.getProperty("user.dir")+ "\\test-output\\reports\\"+getCurrentDate()+".html";
-	public static ExtentHtmlReporter htmlReporter = new ExtentHtmlReporter(strPath);
+	public static String directory = IOUtility.getStrPath();
+	public static String reportPath = directory + File.separator + getCurrentDate() + ".html";
+	public static ExtentHtmlReporter htmlReporter = new ExtentHtmlReporter(reportPath);
 	public static ExtentReports extentReports = new ExtentReports();
-	public static ExtentTest extentTest;
+	public static ThreadLocal<ExtentTest> threadExtentTest = new ThreadLocal<>();
+
 	public void initiateReport() {
-		
+		IOUtility.setFileDownloadPath(directory);
+		IOUtility.createDireactory();
 		htmlReporter.config().setEncoding("UTF-8");
 		htmlReporter.config().setCSS("css-string");
 		htmlReporter.config().setTestViewChartLocation(ChartLocation.TOP);
@@ -40,65 +45,66 @@ public class ReportHandler {
 
 	public void endLogger() {
 		extentReports.flush();
+		log.info("Genrating report at: " + reportPath);
 	}
-	
-	public ExtentTest createTest(String strMethod){
-	extentTest=extentReports.createTest(strMethod);
-	return extentTest;
+
+	public ExtentTest createTest(String strMethod) {
+		threadExtentTest.set(extentReports.createTest(strMethod));
+		return threadExtentTest.get();
 	}
-	
+
 	/*
 	 * 
 	 * Pass, Fail
 	 */
 	public static void logTestResults(ITestResult result) {
-		
+
 		if (result.getStatus() == ITestResult.SUCCESS) {
 
 		} else if (result.getStatus() == ITestResult.FAILURE) {
-			
+
 			try {
 				
-				String strPath = ScreenshotUtility.getScreenshotPath();
 				ScreenshotUtility.takeScreenshot();
-				StringBuilder stringbuilder= new StringBuilder();
-				
-				stringbuilder.append("<p style='color:red'>"+result.getThrowable().getMessage()+"</p>");
+				String strPath = ScreenshotUtility.getScreenshotPath();
+				StringBuilder stringbuilder = new StringBuilder();
+
+				stringbuilder.append("<p style='color:red'>" + result.getThrowable().getMessage() + "</p>");
 				stringbuilder.append("<u>StackTrace:=</u><br>");
 				stringbuilder.append(strackTraceBuilder(result));
-				stringbuilder.append("<br><u><a href='"+strPath+"' target='blank'>Screenshot</a></u><br>");
-				extentTest.log(Status.FAIL, stringbuilder.toString());
+				stringbuilder.append("<br><u><a href='" + strPath + "' target='_blank'>Screenshot</a></u><br>");
+				threadExtentTest.get().log(Status.FAIL, stringbuilder.toString());
 				log.info(ExceptionUtils.getStackTrace(result.getThrowable()));
 			} catch (IOException e) {
-				extentTest.log(Status.FAIL,"<u>StackTrace:=</u><br>"+result.getThrowable().getMessage()+ "<br>Screenshot not captured.<br>"+e.getMessage());
+				threadExtentTest.get().log(Status.FAIL, "<u>StackTrace:=</u><br>" + result.getThrowable().getMessage()
+						+ "<br>Screenshot not captured.<br>" + e.getMessage());
 				log.info(ExceptionUtils.getStackTrace(result.getThrowable()));
 			}
 
 		}
 
 		else if (result.getStatus() == ITestResult.SKIP) {
-			extentTest.log(Status.SKIP, result.getThrowable().getMessage());
+			threadExtentTest.get().log(Status.SKIP, result.getThrowable().getMessage());
 
 		}
 	}
-	
-	
-	public ExtentTest getExtentTestObj(){
-	return extentTest;
+
+	public ExtentTest getExtentTestObj() {
+		return threadExtentTest.get();
 	}
-	
+
 	public static void main(String[] args) {
 		System.out.println(getCurrentDate());
 	}
-	
-	public static String getCurrentDate(){
-		DateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:m a");
+
+	public static String getCurrentDate() {
+		DateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 		return sdf.format(new Date()).replace("/", "_").replace(":", "_").replace(" ", "_");
 	}
-	
-	public static String strackTraceBuilder(ITestResult result){
-		StringBuilder stackTrace= new StringBuilder();
-		for(StackTraceElement s:result.getThrowable().getStackTrace()){
+
+	public static String strackTraceBuilder(ITestResult result) {
+		StringBuilder stackTrace = new StringBuilder();
+		for (StackTraceElement s : result.getThrowable().getStackTrace()) {
 			stackTrace.append(s);
 			stackTrace.append("<br>");
 		}
