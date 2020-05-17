@@ -11,7 +11,6 @@
           <include name="springTestContextAfterTestClass"/>
           <include name="springTestContextBeforeTestMethod"/>
           <include name="start"/>
-          <include name="testButtonClick"/>
           <include name="testNavigationLogin"/>
           <include name="onStart"/>
           <include name="tearDown"/>
