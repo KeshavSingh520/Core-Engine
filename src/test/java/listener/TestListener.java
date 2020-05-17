@@ -17,8 +17,8 @@ import utils.QualityReport;
 @Slf4j
 public class TestListener implements ITestListener {
 
-	public ConcurrentLinkedQueue<TestResults> resultsCache= new ConcurrentLinkedQueue<>();
-      
+	public ConcurrentLinkedQueue<TestResults> resultsCache = new ConcurrentLinkedQueue<>();
+
 	public void onTestStart(ITestResult result) {
 	}
 
@@ -33,7 +33,7 @@ public class TestListener implements ITestListener {
 
 	public void onTestSkipped(ITestResult result) {
 		logFailure(result);
-		
+
 		computeData(result);
 	}
 
@@ -62,12 +62,12 @@ public class TestListener implements ITestListener {
 	}
 
 	public ConcurrentLinkedQueue<TestResults> computeData(ITestResult result) {
-		TestResults	testResult=new TestResults();
+		TestResults testResult = new TestResults();
 		testResult.setStrPackageName(getPackageName(result)).setStrClassName(getClassName(result))
 				.setStrMethodName(getMethodName(result)).setStrStatus(getTestStatus(result))
 				.setStrException(getException(result));
 		this.resultsCache.add(testResult);
-        return this.resultsCache; 
+		return this.resultsCache;
 	}
 
 	private String getPackageName(ITestResult result) {
@@ -76,7 +76,8 @@ public class TestListener implements ITestListener {
 	}
 
 	private String getClassName(ITestResult result) {
-		return result.getTestClass().getRealClass().getName().substring(result.getTestClass().getRealClass().getName().lastIndexOf(".")+1);
+		return result.getTestClass().getRealClass().getName()
+				.substring(result.getTestClass().getRealClass().getName().lastIndexOf(".") + 1);
 
 	}
 
@@ -85,8 +86,8 @@ public class TestListener implements ITestListener {
 	}
 
 	private String getException(ITestResult result) {
-		if(getTestStatus(result).equals("FAIL"))
-		return result.getThrowable().getClass().getSimpleName().toString();
+		if (getTestStatus(result).equals("FAIL"))
+			return result.getThrowable().getClass().getSimpleName().toString();
 		return "";
 	}
 

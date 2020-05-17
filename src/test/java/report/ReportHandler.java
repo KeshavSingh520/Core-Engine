@@ -64,7 +64,7 @@ public class ReportHandler {
 		} else if (result.getStatus() == ITestResult.FAILURE) {
 
 			try {
-				
+
 				ScreenshotUtility.takeScreenshot();
 				String strPath = ScreenshotUtility.getScreenshotPath();
 				StringBuilder stringbuilder = new StringBuilder();

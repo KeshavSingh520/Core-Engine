@@ -28,7 +28,6 @@ public class IOUtility {
 	}
 
 	public static String createDireactory() {
-
 		File file = new File(strPath);
 		if (!file.exists()) {
 			if (file.mkdir()) {

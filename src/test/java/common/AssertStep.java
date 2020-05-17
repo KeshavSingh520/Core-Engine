@@ -14,7 +14,6 @@ public class AssertStep extends Assert {
 	public static void assertTrue(boolean bflag, BaseTestCase baseTestCase, String strStepDetails) {
 		Assert.assertTrue(bflag, strStepDetails);
 		logFailure(bflag,baseTestCase,strStepDetails);
-
 	}
 
 	public static void assertStep(BaseTestCase baseTestCase, String strStepDetails) {

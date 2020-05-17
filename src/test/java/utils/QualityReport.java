@@ -24,16 +24,13 @@ import report.ReportHandler;
 public class QualityReport {
 
 	static List<String> lstHeaders = new ArrayList<String>();
-	static String strPath =IOUtility.getStrPath()+File.separator+"QualityReport.xlsx";
+	static String strPath = IOUtility.getStrPath() + File.separator + "QualityReport.xlsx";
 	static ReportHandler reporthandler = new ReportHandler();
 	ITestContext context;
 	ThreadLocal<ExtentTest> extentTest;
-	/*
-	 * public QualityReport(ITestContext context, ThreadLocal<ExtentTest>
-	 * extentTest) { this.context = context; this.extentTest = extentTest; }
-	 */
 
-	public static void generateQualityReport(ConcurrentLinkedQueue<TestResults> resultsCache) throws FileNotFoundException, IOException {
+	public static void generateQualityReport(ConcurrentLinkedQueue<TestResults> resultsCache)
+			throws FileNotFoundException, IOException {
 
 		lstHeaders.add("Package Name");
 		lstHeaders.add("Class Name");
@@ -47,9 +44,9 @@ public class QualityReport {
 		for (int i = 0; i < lstHeaders.size(); i++) {
 			row.createCell(i, CellType.STRING).setCellValue(lstHeaders.get(i));
 		}
-		int rowNum=1;
-		for(TestResults result:resultsCache) {
-			row=sheet.createRow(rowNum);
+		int rowNum = 1;
+		for (TestResults result : resultsCache) {
+			row = sheet.createRow(rowNum);
 			row.createCell(0, CellType.STRING).setCellValue(result.getStrPackageName());
 			row.createCell(1, CellType.STRING).setCellValue(result.getStrClassName());
 			row.createCell(2, CellType.STRING).setCellValue(result.getStrMethodName());

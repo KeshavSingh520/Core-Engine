@@ -1,8 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Suite]">
-  <test name="Test(failed)">
+  <test name="Test(failed)" parallel="classes">
     <classes>
+      <class name="com.tests.HomePageTest">
+        <methods>
+          <include name="springTestContextBeforeTestClass"/>
+          <include name="init"/>
+          <include name="springTestContextPrepareTestInstance"/>
+          <include name="springTestContextAfterTestClass"/>
+          <include name="springTestContextBeforeTestMethod"/>
+          <include name="start"/>
+          <include name="testButtonClick"/>
+          <include name="testNavigationLogin"/>
+          <include name="onStart"/>
+          <include name="tearDown"/>
+          <include name="springTestContextAfterTestMethod"/>
+          <include name="end"/>
+        </methods>
+      </class> <!-- com.tests.HomePageTest -->
       <class name="com.tests.LoginTest">
         <methods>
           <include name="springTestContextBeforeTestClass"/>
@@ -12,21 +28,9 @@
           <include name="springTestContextBeforeTestMethod"/>
           <include name="tearDown"/>
           <include name="springTestContextAfterTestMethod"/>
+          <include name="onStart"/>
         </methods>
       </class> <!-- com.tests.LoginTest -->
-      <class name="com.tests.HomePageTest">
-        <methods>
-          <include name="springTestContextBeforeTestClass"/>
-          <include name="init"/>
-          <include name="springTestContextPrepareTestInstance"/>
-          <include name="springTestContextAfterTestClass"/>
-          <include name="springTestContextBeforeTestMethod"/>
-          <include name="start"/>
-          <include name="testNavigationLogin"/>
-          <include name="tearDown"/>
-          <include name="springTestContextAfterTestMethod"/>
-        </methods>
-      </class> <!-- com.tests.HomePageTest -->
     </classes>
   </test> <!-- Test(failed) -->
 </suite> <!-- Failed suite [Suite] -->

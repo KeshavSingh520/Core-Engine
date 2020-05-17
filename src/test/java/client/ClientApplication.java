@@ -3,7 +3,6 @@ package client;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import base.BasePage;
 import base.BaseTestCase;
 
 public class ClientApplication {

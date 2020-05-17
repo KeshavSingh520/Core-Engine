@@ -29,7 +29,7 @@ public class BaseTestCase extends AbstractTestNGSpringContextTests {
 
 	@Value("${Url}")
 	private String url;
-	
+
 	@Value("${Browser}")
 	private String browser;
 	@Value("${FILE_DOWNLOAD_PATH}")
@@ -53,7 +53,7 @@ public class BaseTestCase extends AbstractTestNGSpringContextTests {
 		reportHandler = new ReportHandler();
 		reportHandler.initiateReport();
 		ReportHandler.extentReports.setSystemInfo("Browser", this.browser);
-		
+
 	}
 
 	@BeforeMethod

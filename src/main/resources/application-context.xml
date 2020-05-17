@@ -15,6 +15,7 @@
 	<bean id="base" class="base.BaseTestCase">
 	
 	</bean>
+	
 
 </beans>
 

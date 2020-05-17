@@ -40,7 +40,6 @@ public class BrowserHandler{
 			System.setProperty(ChromeDriverService.CHROME_DRIVER_SILENT_OUTPUT_PROPERTY, "true");
 			WebDriverManager.chromedriver().setup();
 			driver = new ChromeDriver();
-			//driver.manage().window().maximize();
 			driver.manage().timeouts().implicitlyWait(implicitWait, TimeUnit.SECONDS);
 			driver.get(strUrl);
 		}
