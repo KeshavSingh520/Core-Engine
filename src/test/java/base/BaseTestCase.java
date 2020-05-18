@@ -1,5 +1,6 @@
 package base;
 
+import java.io.IOException;
 import java.lang.reflect.Method;
 import java.net.MalformedURLException;
 
@@ -83,7 +84,7 @@ public class BaseTestCase extends AbstractTestNGSpringContextTests {
 	}
 
 	@AfterSuite
-	public void end() {
+	public void end() throws IOException {
 		reportHandler.endLogger();
 	}
 

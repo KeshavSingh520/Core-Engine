@@ -6,6 +6,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.testng.ITestResult;
 
@@ -43,9 +44,11 @@ public class ReportHandler {
 		extentReports.setSystemInfo("Java Version", System.getProperty("java.version"));
 	}
 
-	public void endLogger() {
+	public void endLogger() throws IOException {
 		extentReports.flush();
 		log.info("Genrating report at: " + reportPath);
+		FileUtils.copyFile(new File(reportPath), new File(System.getProperty("user.dir")+File.separator+"test-output"));
+		log.info("Copying report at root directory of project");
 	}
 
 	public ExtentTest createTest(String strMethod) {
