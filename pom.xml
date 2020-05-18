@@ -9,8 +9,10 @@
 
 	<properties>
 		<!-- PATH TO SUITE with testsuites folder -->
-		<test.run>testng.xml</test.run>
+		<!-- <test.run>testng.xml</test.run> -->
 
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
 	</properties>
 
 	<dependencies>
