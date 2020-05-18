@@ -11,13 +11,16 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 
 import base.BaseTestCase;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 public class ScreenshotUtility {
 
 	public static String strPath;
 
 	public static void takeScreenshot() throws IOException {
 		strPath = createScreenShotFolder() + File.separator + getCurrentDate() + ".png";
+		log.info("Screenshot directory created:  "+strPath);
 		File srcFile = ((TakesScreenshot) BaseTestCase.getWebdriver()).getScreenshotAs(OutputType.FILE);
 		FileUtils.copyFile(srcFile, new File(strPath));
 	}
@@ -31,6 +34,7 @@ public class ScreenshotUtility {
 		File file = new File(screenshotFolderPath);
 		if (!file.exists()) {
 			if (file.mkdir()) {
+				log.info("Screenshot directory created");
 			}
 		}
 		return screenshotFolderPath;
