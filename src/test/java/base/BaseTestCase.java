@@ -1,6 +1,7 @@
 package base;
 
 import java.lang.reflect.Method;
+import java.net.MalformedURLException;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.RemoteWebDriver;
@@ -34,6 +35,9 @@ public class BaseTestCase extends AbstractTestNGSpringContextTests {
 	private String browser;
 	@Value("${FILE_DOWNLOAD_PATH}")
 	private String fileDownloadFolder;
+	
+	@Value("${Selenium_Grid_Hub}")
+	private String strHub;
 
 	public static ThreadLocal<WebDriver> threadDriver = new ThreadLocal<>();
 	public static ThreadLocal<Method> threadMethod = new ThreadLocal<>();
@@ -57,13 +61,13 @@ public class BaseTestCase extends AbstractTestNGSpringContextTests {
 	}
 
 	@BeforeMethod
-	public void init(Method method) {
+	public void init(Method method) throws MalformedURLException {
 		this.currentMethod = method.getName();
 		threadMethod.set(method);
 
 		log.info("Test Method Started" + " " + "[" + threadMethod.get().getName() + "]" + " " + "[" + "PASS" + "]");
 		threadExtentTest.set(reportHandler.createTest(getClass().getName() + "." + threadMethod.get().getName()));
-		browserHandler = new BrowserHandler(this.browser, this.url);
+		browserHandler = new BrowserHandler(this.browser, this.url,strHub);
 		threadDriver.set(BrowserHandler.getWebdriver());
 		log.info(threadMethod.get().getName() + " " + ((RemoteWebDriver) threadDriver.get()).getSessionId().toString());
 	}
