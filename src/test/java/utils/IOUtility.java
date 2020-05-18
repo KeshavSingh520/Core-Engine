@@ -9,7 +9,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 public class IOUtility {
-	private static String strPath = System.getProperty("user.dir") + "\\test-output\\" + getCurrentDate();
+	private static String strPath = System.getProperty("user.dir") + File.separator+"test-output"+File.separator + getCurrentDate();
 
 	/**
 	 * @return the strPath
