@@ -47,8 +47,8 @@ public class ReportHandler {
 	public void endLogger() throws IOException {
 		extentReports.flush();
 		log.info("Genrating report at: " + reportPath);
-		FileUtils.copyFile(new File(reportPath), new File(System.getProperty("user.dir")+File.separator+"test-output"));
-		log.info("Copying report at root directory of project");
+		FileUtils.copyFile(new File(reportPath), new File(System.getProperty("user.dir")+File.separator+"test-output"+File.separator+"AutomationReport.html"));
+		log.info("Copying report at root directory of project: "+System.getProperty("user.dir")+File.separator+"test-output"+File.separator+"AutomationReport.html");
 	}
 
 	public ExtentTest createTest(String strMethod) {
