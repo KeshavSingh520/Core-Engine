@@ -39,6 +39,9 @@ public class BaseTestCase extends AbstractTestNGSpringContextTests {
 	
 	@Value("${Selenium_Grid_Hub}")
 	private String strHub;
+	
+	@Value("${Selenium_Grid_Enabled}")
+	private String strGridEnabled;
 
 	public static ThreadLocal<WebDriver> threadDriver = new ThreadLocal<>();
 	public static ThreadLocal<Method> threadMethod = new ThreadLocal<>();
@@ -68,7 +71,7 @@ public class BaseTestCase extends AbstractTestNGSpringContextTests {
 
 		log.info("Test Method Started" + " " + "[" + threadMethod.get().getName() + "]" + " " + "[" + "PASS" + "]");
 		threadExtentTest.set(reportHandler.createTest(getClass().getName() + "." + threadMethod.get().getName()));
-		browserHandler = new BrowserHandler(this.browser, this.url,strHub);
+		browserHandler = new BrowserHandler(this.browser, this.url,strHub,this.strGridEnabled);
 		threadDriver.set(BrowserHandler.getWebdriver());
 		log.info(threadMethod.get().getName() + " " + ((RemoteWebDriver) threadDriver.get()).getSessionId().toString());
 	}
