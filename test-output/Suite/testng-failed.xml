@@ -1,33 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Suite]">
-  <test name="Test(failed)" parallel="classes">
+  <test name="Test(failed)" parallel="methods">
     <classes>
-      <class name="com.tests.HomePageTest">
+      <class name="com.tests.LoginTest">
         <methods>
+          <include name="testLoginFunctionality"/>
           <include name="springTestContextBeforeTestClass"/>
           <include name="init"/>
           <include name="springTestContextPrepareTestInstance"/>
           <include name="springTestContextAfterTestClass"/>
           <include name="springTestContextBeforeTestMethod"/>
           <include name="start"/>
-          <include name="testNavigationLogin"/>
-          <include name="onStart"/>
-          <include name="tearDown"/>
           <include name="springTestContextAfterTestMethod"/>
-          <include name="end"/>
-        </methods>
-      </class> <!-- com.tests.HomePageTest -->
-      <class name="com.tests.LoginTest">
-        <methods>
-          <include name="springTestContextBeforeTestClass"/>
-          <include name="init"/>
-          <include name="springTestContextPrepareTestInstance"/>
-          <include name="springTestContextAfterTestClass"/>
-          <include name="springTestContextBeforeTestMethod"/>
-          <include name="tearDown"/>
-          <include name="springTestContextAfterTestMethod"/>
-          <include name="onStart"/>
         </methods>
       </class> <!-- com.tests.LoginTest -->
     </classes>

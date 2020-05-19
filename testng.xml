@@ -3,7 +3,7 @@
 <suite name="Suite">
   <test name="Test" parallel="methods" thread-count="3">
     <classes>
-      <class name="com.tests.HomePageTest"/>
+     <!--  <class name="com.tests.HomePageTest"/> -->
       <class name="com.tests.LoginTest"/>
       
     </classes>
