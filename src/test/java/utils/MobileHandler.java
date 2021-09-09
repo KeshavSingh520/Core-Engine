@@ -35,7 +35,7 @@ public class MobileHandler {
 		log.info("Starting Appium Service:  " + service.getUrl());
 		service.start();
 		}else {
-			log.info("Appium Service already running:   " + service.getUrl());
+			log.info("Appium Service already running:  " + service.getUrl());
 		}
 		return service;
 	}
