@@ -22,6 +22,7 @@ import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import report.ReportHandler;
 import utils.BrowserHandler;
+import utils.MobileHandler;
 
 @Slf4j
 @Getter
@@ -32,6 +33,9 @@ public class BaseTestCase extends AbstractTestNGSpringContextTests {
 	@Value("${Url}")
 	private String url;
 
+	@Value("${MobileBrowser}")
+	private String mobileBrowser;
+	
 	@Value("${Browser}")
 	private String browser;
 	@Value("${FILE_DOWNLOAD_PATH}")
@@ -52,9 +56,11 @@ public class BaseTestCase extends AbstractTestNGSpringContextTests {
 	private String completeAbsolutePath;
 	private String currentMethod;
 	private int implicitWait = 10;
+	private String toolType = "Android";
 
 	private static ReportHandler reportHandler = null;
 	public BrowserHandler browserHandler;
+	public MobileHandler mobileHandler;
 
 	@BeforeSuite
 	public void start() {
@@ -71,7 +77,7 @@ public class BaseTestCase extends AbstractTestNGSpringContextTests {
 
 		log.info("Test Method Started" + " " + "[" + threadMethod.get().getName() + "]" + " " + "[" + "PASS" + "]");
 		threadExtentTest.set(reportHandler.createTest(getClass().getName() + "." + threadMethod.get().getName()));
-		browserHandler = new BrowserHandler(this.browser, this.url,strHub,this.strGridEnabled);
+		browserHandler = new BrowserHandler(this.browser, this.url,strHub,this.strGridEnabled,this.mobileBrowser);
 		threadDriver.set(BrowserHandler.getWebdriver());
 		log.info(threadMethod.get().getName() + " " + ((RemoteWebDriver) threadDriver.get()).getSessionId().toString());
 	}

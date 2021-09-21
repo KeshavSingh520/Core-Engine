@@ -28,8 +28,8 @@ public class MobileHandler {
 	public AppiumDriverLocalService startAppium() {
 		if(service==null) {
 		builder = new AppiumServiceBuilder();
-		builder.withIPAddress("127.0.0.1");
-		builder.usingAnyFreePort();
+		builder.withIPAddress("192.168.1.44");
+		builder.usingPort(4321);
 		builder.withArgument((ServerArgument)GeneralServerFlag.LOG_LEVEL,"info");
 		service = AppiumDriverLocalService.buildService(builder);
 		log.info("Starting Appium Service:  " + service.getUrl());
@@ -49,6 +49,11 @@ public class MobileHandler {
 	 * @return
 	 */
 	public AndroidDriver<WebElement> createAndroidDriver() {
+		
+//		cap.setCapability(MobileCapabilityType.PLATFORM_VERSION, "8");
+//		cap.setCapability(MobileCapabilityType.UDID, "emulator-5554");
+//		cap.setCapability(MobileCapabilityType.DEVICE_NAME, "Honor 7X");
+		
 		cap.setCapability(MobileCapabilityType.PLATFORM_NAME, "Android");
 		cap.setCapability(MobileCapabilityType.PLATFORM_VERSION, "9.0.6");
 		cap.setCapability(MobileCapabilityType.UDID, "cdaed149");

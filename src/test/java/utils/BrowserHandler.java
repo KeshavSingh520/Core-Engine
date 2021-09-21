@@ -3,20 +3,14 @@ package utils;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.concurrent.TimeUnit;
-import java.util.logging.Level;
 
-import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.RemoteWebDriver;
-import org.openqa.selenium.remote.session.CapabilitiesFilter;
 import org.testng.annotations.Test;
 
-import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.remote.MobileCapabilityType;
 import io.appium.java_client.service.local.AppiumDriverLocalService;
 import io.appium.java_client.service.local.AppiumServiceBuilder;
@@ -81,6 +75,7 @@ public class BrowserHandler {
 		return driver;
 	}
 	
+	@SuppressWarnings("deprecation")
 	public WebDriver createFirefoxDriver(String strhub, String strGridEnabled) throws MalformedURLException {
 		WebDriver driver = null;
 		if (driver == null) {
