@@ -6,5 +6,6 @@
       <class name="com.tests.HomePageTest"/>
       <class name="com.tests.LoginTest"/>
     </classes>
+    
   </test> <!-- Test -->
 </suite> <!-- Suite -->
