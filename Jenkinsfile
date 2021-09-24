@@ -8,9 +8,9 @@ pipeline {
         }
         
         
-        post {
-        always {
-            emailtext body: 'A Test EMail', recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: 'Test'
+        stage("email") {
+        steps {
+           mail bcc: '', body: 'This is pipeline report.', cc: '', from: '', replyTo: '', subject: 'Test', to: 'keshavsingh520@gmail.com'
         }
     }
         
