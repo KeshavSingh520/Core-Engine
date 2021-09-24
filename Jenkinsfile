@@ -6,14 +6,14 @@ pipeline {
                 bat "mvn test"
             }
         }
+         
         
-        
-        stage("email") {
-        steps {
-          emailext body: 'Test', subject: 'Test', to: 'keshavsingh520@gmail.com', attachmentsPattern: '.html'
-        }
     }
-        
-        
+    
+    
+     post { 
+        always { 
+            emailext body: 'Test', subject: 'Test', to: 'keshavsingh520@gmail.com', attachmentsPattern: '.html'
+        }
     }
 }
