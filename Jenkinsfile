@@ -1,12 +1,10 @@
 pipeline{
-agent any{
+agent any
 stages{
 stage("test"){
 
-steps "mvn test"
+steps { sh "mvn test" }
+}
 }
 
-}
-
-}
 }
