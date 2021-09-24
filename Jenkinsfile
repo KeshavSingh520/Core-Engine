@@ -20,7 +20,7 @@ pipeline {
     
      post { 
         always { 
-            emailext body: 'Test', subject: 'Test', to: 'keshavsingh520@gmail.com', attachmentsPattern: 'C:\Users\HP\.jenkins\workspace\FirstPipeline\target\surefire-reports\*.html'
+            emailext body: 'Test', subject: 'Test', to: 'keshavsingh520@gmail.com', attachmentsPattern: "C:\\Users\\HP\\.jenkins\\workspace\\FirstPipeline\\target\\surefire-reports\\*.html"
         }
     }
 }
