@@ -6,5 +6,14 @@ pipeline {
                 echo "hi"
             }
         }
+        
+        
+        post {
+        always {
+            emailtext body: 'A Test EMail', recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: 'Test'
+        }
+    }
+        
+        
     }
 }
