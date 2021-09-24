@@ -10,7 +10,7 @@ pipeline {
         
         stage("email") {
         steps {
-           mail bcc: '', body: 'This is pipeline report.', cc: '', from: '', replyTo: '', subject: 'Test', to: 'keshavsingh520@gmail.com'
+          emailext body: 'Test', subject: 'Test', to: 'keshavsingh520@gmail.com'
         }
     }
         
