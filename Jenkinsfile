@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage("test") {
             steps {
-                sh "mvn test"
+                echo "hi"
             }
         }
     }
