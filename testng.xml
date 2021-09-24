@@ -3,13 +3,13 @@
 <suite name="Suite">
 	<test name="Test" parallel="methods" thread-count="2">
 		<classes>
-  <class name="com.tests.MobileTest">
+  <!-- <class name="com.tests.MobileTest">
 				<methods>
-					<include name="testMobile" />
+					<include name="testMobile1" />
 				</methods>
-			</class> 
-			<!--  <class name="com.tests.LoginTest"/>
-			 <class name="com.tests.HomePageTest"/>
+			</class>  -->
+			 <class name="com.tests.LoginTest"/>
+			<!--  <class name="com.tests.HomePageTest"/>
 			 
 			 
  -->
