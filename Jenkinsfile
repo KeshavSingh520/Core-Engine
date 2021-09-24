@@ -1,10 +1,10 @@
-pipeline{
-agent any
-stages{
-stage("test"){
-
-steps { sh "mvn test" }
-}
-}
-
+pipeline {
+    agent any
+    stages {
+        stage('build') {
+            steps {
+                sh 'mvn --version'
+            }
+        }
+    }
 }
