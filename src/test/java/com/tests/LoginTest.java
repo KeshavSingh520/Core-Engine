@@ -26,7 +26,7 @@ public class LoginTest extends BaseTestCase{
 		driver=threadDriver.get();
 	}
 	
-	@Test(groups = "Smoke")
+	@Test(groups = {"Smoke"})
 	public void testLoginFunctionality() throws InterruptedException{
 		HomePage homePage= PageFactory.initElements(driver, HomePage.class);
 		AssertStep.assertStep(this, "Navigating to login page.");
@@ -48,5 +48,5 @@ public class LoginTest extends BaseTestCase{
 		Thread.sleep(10000);
 		System.out.println(System.getProperty("Browsers"));
 	}
-
+	
 }

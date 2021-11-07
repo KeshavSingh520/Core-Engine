@@ -20,7 +20,7 @@ public class HomePageTest extends BaseTestCase{
 	
 	WebDriver driver;
 	
-	@BeforeMethod
+	@BeforeMethod(alwaysRun = true)
 	public void onStart() {
 		driver=threadDriver.get();
 	}
