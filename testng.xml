@@ -9,10 +9,9 @@
 				</methods>
 			</class>  -->
 			 <class name="com.tests.LoginTest"/>
-			<!--  <class name="com.tests.HomePageTest"/>
+			<class name="com.tests.HomePageTest"/>
 			 
 			 
- -->
 		</classes>
 	</test> <!-- Test -->
 </suite> <!-- Suite -->

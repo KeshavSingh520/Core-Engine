@@ -26,7 +26,7 @@ public class LoginTest extends BaseTestCase{
 		driver=threadDriver.get();
 	}
 	
-	@Test
+	@Test(groups = "Smoke")
 	public void testLoginFunctionality() throws InterruptedException{
 		HomePage homePage= PageFactory.initElements(driver, HomePage.class);
 		AssertStep.assertStep(this, "Navigating to login page.");

@@ -26,7 +26,7 @@ public class HomePageTest extends BaseTestCase{
 	}
 	
 	
-	@Test
+	@Test(groups = "Regression")
 	public void testNavigationLogin() throws InterruptedException{
 		HomePage homePage= PageFactory.initElements(driver, HomePage.class);
 		AssertStep.assertStep(this, "Click login.");
@@ -35,7 +35,7 @@ public class HomePageTest extends BaseTestCase{
 		log.info("navigation: "+((RemoteWebDriver)driver).getSessionId().toString());
 	}
 	
-	@Test
+	@Test(groups = "Regression")
 	public void testButtonClick() throws InterruptedException{
 		HomePage homePage= PageFactory.initElements(driver, HomePage.class);
 		AssertStep.assertStep(this, "Click button-clicks.");
