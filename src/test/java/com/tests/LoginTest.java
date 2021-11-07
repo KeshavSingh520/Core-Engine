@@ -46,7 +46,7 @@ public class LoginTest extends BaseTestCase{
 		AssertStep.assertStep(this, "Accept alert.");
 		loginPage.acceptAlert();
 		Thread.sleep(10000);
-		System.out.println(System.getProperty("Browser"));
+		System.out.println(System.getProperty("Browsers"));
 	}
 
 }
