@@ -62,15 +62,15 @@ public class BaseTestCase extends AbstractTestNGSpringContextTests {
 	public BrowserHandler browserHandler;
 	public MobileHandler mobileHandler;
 
-	@BeforeSuite
+	@BeforeSuite(alwaysRun = true)
 	public void start() {
 		reportHandler = new ReportHandler();
 		reportHandler.initiateReport();
 		ReportHandler.extentReports.setSystemInfo("Browser", this.browser);
-
+		System.out.println("Report initiated");
 	}
 
-	@BeforeMethod
+	@BeforeMethod(alwaysRun = true)
 	public void init(Method method) throws MalformedURLException {
 		this.currentMethod = method.getName();
 		threadMethod.set(method);
@@ -82,7 +82,7 @@ public class BaseTestCase extends AbstractTestNGSpringContextTests {
 		log.info(threadMethod.get().getName() + " " + ((RemoteWebDriver) threadDriver.get()).getSessionId().toString());
 	}
 
-	@AfterMethod
+	@AfterMethod(alwaysRun = true)
 	public void tearDown(ITestResult result) {
 		String status = result.getStatus() == ITestResult.SUCCESS ? "PASS"
 				: result.getStatus() == ITestResult.FAILURE ? "FAIL" : "SKIP";
@@ -92,7 +92,7 @@ public class BaseTestCase extends AbstractTestNGSpringContextTests {
 		driver = null;
 	}
 
-	@AfterSuite
+	@AfterSuite(alwaysRun = true)
 	public void end() throws IOException {
 		reportHandler.endLogger();
 	}
