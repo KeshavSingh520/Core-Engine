@@ -9,7 +9,7 @@
 
 	<properties>
 		<!-- PATH TO SUITE with testsuites folder -->
-		<test.run>testng.xml</test.run>
+		<test.run>testng1.xml</test.run>
 		<Browsers>Chrome</Browsers>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
