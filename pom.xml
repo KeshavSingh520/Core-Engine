@@ -10,7 +10,8 @@
 	<properties>
 		<!-- PATH TO SUITE with testsuites folder -->
 		<test.run>testng1.xml</test.run>
-		<Browsers>Chrome</Browsers>
+		<groups>abc</groups>
+		<Browsers>s</Browsers>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
 	</properties>
