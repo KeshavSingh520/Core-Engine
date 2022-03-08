@@ -36,7 +36,7 @@ public class BaseTestCase extends AbstractTestNGSpringContextTests {
 	@Value("${MobileBrowser}")
 	private String mobileBrowser;
 	
-	@Value("${Browser}")
+//	@Value("${Browser}")
 	private String browser;
 	@Value("${FILE_DOWNLOAD_PATH}")
 	private String fileDownloadFolder;
@@ -66,6 +66,7 @@ public class BaseTestCase extends AbstractTestNGSpringContextTests {
 	public void start() {
 		reportHandler = new ReportHandler();
 		reportHandler.initiateReport();
+		this.browser = System.getProperty("Browsers");
 		ReportHandler.extentReports.setSystemInfo("Browser", this.browser);
 		System.out.println("Report initiated");
 	}
@@ -74,7 +75,6 @@ public class BaseTestCase extends AbstractTestNGSpringContextTests {
 	public void init(Method method) throws MalformedURLException {
 		this.currentMethod = method.getName();
 		threadMethod.set(method);
-
 		log.info("Test Method Started" + " " + "[" + threadMethod.get().getName() + "]" + " " + "[" + "PASS" + "]");
 		threadExtentTest.set(reportHandler.createTest(getClass().getName() + "." + threadMethod.get().getName()));
 		browserHandler = new BrowserHandler(this.browser, this.url,strHub,this.strGridEnabled,this.mobileBrowser);

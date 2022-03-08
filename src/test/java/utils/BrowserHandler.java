@@ -41,7 +41,10 @@ public class BrowserHandler {
 		switch (browsersList.valueOf(browsersList.class, strBrowser.toUpperCase())) {
 		case CHROME:
 			threadDriver.set(createChromeDriver(strhub,strGridEnabled,mobileBrowser));
+			break;
 		case FIREFOX:
+			threadDriver.set(createFirefoxDriver(strhub,strGridEnabled));
+			break;
 		case EDGE:
 		case SAFARI:
 		}
